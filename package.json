@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev src/server.ts"
+    "dev": "ts-node-dev --transpileOnly src/server.ts",
+    "dev:slower": "ts-node-dev src/server.ts"
   },
   "dependencies": {
     "express": "^4.17.1"
