@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import appointmentsRouter from './appointment.routes'
+import appointmentsRouter from '../appointments/appointment.routes'
 
 const routes = Router()
 routes.use('/appointments', appointmentsRouter)
