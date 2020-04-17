@@ -1,12 +1,13 @@
 import { Router } from 'express'
 import { startOfHour, parseISO, isEqual } from 'date-fns'
 import Appointment from './appointment.model'
+import AppointmentsRepository from './appointments.repository'
 
 const appointmentsRouter = Router()
-const appointments: Appointment[] = []
+const repository = new AppointmentsRepository()
 
 appointmentsRouter.get('/', (request, response) => {
-  response.json(appointments)
+  response.json(repository.findAll())
 })
 
 appointmentsRouter.post('/', (request, response) => {
@@ -14,8 +15,8 @@ appointmentsRouter.post('/', (request, response) => {
   const formatedDate = formatDate(date)
   if (validateAppointmentDate(formatedDate)) {
     const appointment = new Appointment(provider, formatedDate)
-    appointments.push(appointment)
-    response.json(appointment)
+    const savedAppointment = repository.create(appointment)
+    response.json(savedAppointment)
   } else {
     response.status(400).json({ message: 'Invalid Schedule' })
   }
@@ -25,9 +26,7 @@ const formatDate = (dateAsText: string) => {
   return startOfHour(parseISO(dateAsText))
 }
 const validateAppointmentDate = (date: Date) => {
-  const result = appointments.find(savedAppointment =>
-    isEqual(savedAppointment.date, date)
-  )
+  const result = repository.findByDate(date)
   return !result
 }
 export default appointmentsRouter
