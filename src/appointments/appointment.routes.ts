@@ -25,8 +25,10 @@ appointmentsRouter.post('/', (request, response) => {
 const formatDate = (dateAsText: string) => {
   return startOfHour(parseISO(dateAsText))
 }
+
 const validateAppointmentDate = (date: Date) => {
   const result = repository.findByDate(date)
   return !result
 }
+
 export default appointmentsRouter
