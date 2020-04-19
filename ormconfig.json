@@ -4,5 +4,9 @@
   "username": "postgres",
   "password": "docker",
   "host": "localhost",
-  "database": "gobarber"
+  "database": "gobarber",
+  "migrations": ["./src/config/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "./src/config/migrations"
+  }
 }

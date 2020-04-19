@@ -6,7 +6,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --transpileOnly --inspect --ignore-watch node_modules src/server.ts",
-    "dev:slower": "ts-node-dev src/server.ts"
+    "dev:slower": "ts-node-dev src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "date-fns": "^2.12.0",
