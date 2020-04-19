@@ -14,7 +14,7 @@ appointmentsRouter.post('/', (request, response) => {
     const savedAppointment = service.createAppointment(provider, date)
     response.json(savedAppointment)
   } catch (e) {
-    response.status(400).json({ message: 'Invalid Schedule' })
+    response.status(400).json({ message: e.message })
   }
 })
 

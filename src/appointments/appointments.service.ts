@@ -12,7 +12,7 @@ export default class AppointmentsService {
       const savedAppointment = this.repository.create(appointment)
       return savedAppointment
     } else {
-      throw new Error('invalid appointment date')
+      throw Error('invalid appointment date')
     }
   }
 
