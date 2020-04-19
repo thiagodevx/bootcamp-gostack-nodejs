@@ -1,0 +1,8 @@
+{
+  "type": "postgres",
+  "port": 5000,
+  "username": "postgres",
+  "password": "docker",
+  "host": "localhost",
+  "database": "gobarber"
+}
