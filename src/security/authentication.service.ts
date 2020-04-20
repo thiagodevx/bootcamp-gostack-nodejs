@@ -8,7 +8,8 @@ export default class AuthenticationService {
     const usersRepository = getRepository(User)
     const user = await usersRepository.findOne({ where: { email: authentication.email } })
     if (!user) throw Error('Incorrect email')
-    if (!this.matchPassword(authentication.password, user.password)) throw Error('Incorrect password')
+    const passwordMatches = await this.matchPassword(authentication.password, user.password)
+    if (!passwordMatches) throw Error('Incorrect password')
   }
 
   public matchPassword = async (password: string, cryptPassword: string) => {
