@@ -1,6 +1,10 @@
 import { getRepository } from 'typeorm'
 import User from './user.model'
+import fs from 'fs'
+import path from 'path'
 import { hash } from 'bcryptjs'
+import multerConfiguration from '../config/multerConfiguration'
+
 export default class UsersService {
   public create = async (user: User) => {
     const userRepository = getRepository(User)
@@ -14,5 +18,21 @@ export default class UsersService {
       const newPassword = await hash(user.password, 8)
       user.password = newPassword
     }
+  }
+
+  public updateUserAvatar = async (userId: string, filename: string): Promise<User> => {
+    const repository = getRepository(User)
+    const user = await repository.findOne({ where: { id: userId } })
+    if (!user) throw Error('User not found, try to log back into the application')
+    if (user.avatar) this.deleteOldAvatarImage(user.avatar)
+    user.avatar = filename
+    return await repository.save(user)
+  }
+
+  private deleteOldAvatarImage = async (avatar: string) => {
+    const folder = multerConfiguration.avatarFolter
+    const file = path.join(folder, avatar)
+    const fileExists = await fs.promises.stat(file)
+    if (fileExists) await fs.promises.unlink(file)
   }
 }
