@@ -5,7 +5,7 @@
   "password": "docker",
   "host": "localhost",
   "database": "gobarber",
-  "entities": "./src/**/*.model.ts",
+  "entities": ["./src/**/*.model.ts"],
   "migrations": ["./src/config/migrations/*.ts"],
   "cli": {
     "migrationsDir": "./src/config/migrations"
