@@ -6,19 +6,25 @@ class User {
   id?: string
 
   @Column()
-  name?: string
+  name: string
 
   @Column()
-  email?: string
+  email: string
 
   @Column()
-  password?: string
+  password: string
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt?: Date
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt?: Date
+
+  constructor(name: string, email: string, password: string) {
+    this.name = name
+    this.email = email
+    this.password = password
+  }
 }
 
 export default User
