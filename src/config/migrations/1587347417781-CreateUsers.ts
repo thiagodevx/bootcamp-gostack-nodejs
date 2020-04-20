@@ -2,7 +2,7 @@ import { MigrationInterface, QueryRunner, Table } from 'typeorm'
 import { TableOptions } from 'typeorm/schema-builder/options/TableOptions'
 
 const tableInfo: TableOptions = {
-  name: 'appointments',
+  name: 'users',
   columns: [
     {
       name: 'id',
@@ -12,19 +12,30 @@ const tableInfo: TableOptions = {
       default: 'uuid_generate_v4()'
     },
     {
-      name: 'provider',
+      name: 'name',
       type: 'varchar',
       isNullable: false
     },
     {
-      name: 'date',
-      type: 'timestamp with time zone',
+      name: 'email',
+      type: 'varchar',
+      isUnique: true,
       isNullable: false
+    },
+    {
+      name: 'created_at',
+      type: 'timestamp',
+      default: 'now()'
+    },
+    {
+      name: 'updated_at',
+      type: 'timestamp',
+      default: 'now()'
     }
   ]
 }
 
-class CreateAppointments1587340565688 implements MigrationInterface {
+export default class CreateUsers1587347417781 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.createTable(new Table(tableInfo))
   }
@@ -33,5 +44,3 @@ class CreateAppointments1587340565688 implements MigrationInterface {
     await queryRunner.dropTable(tableInfo.name)
   }
 }
-
-export default CreateAppointments1587340565688
