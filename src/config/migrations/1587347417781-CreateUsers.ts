@@ -16,6 +16,10 @@ const tableInfo: TableOptions = {
       type: 'varchar'
     },
     {
+      name: 'password',
+      type: 'varchar'
+    },
+    {
       name: 'email',
       type: 'varchar',
       isUnique: true
