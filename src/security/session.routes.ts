@@ -12,7 +12,7 @@ sessionRouter.post('/', async (request, response) => {
     const token = await service.authenticate(authentication)
     response.json(token)
   } catch (e) {
-    response.status(400).json({ message: e.message })
+    response.status(e.statusCode).json({ message: e.message })
   }
 })
 

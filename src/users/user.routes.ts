@@ -18,7 +18,7 @@ usersRouter.post('/', async (request, response) => {
     delete savedUser.password
     response.json(savedUser)
   } catch (e) {
-    response.status(400).json({ message: e.message })
+    response.status(e.statusCode).json({ message: e.message })
   }
 })
 
@@ -30,7 +30,7 @@ usersRouter.patch('/avatar', ensureAuthenticated, upload.single('avatar'), async
     delete savedUser.password
     response.json(savedUser)
   } catch (e) {
-    response.status(400).json({ message: e.message })
+    response.status(e.statusCode).json({ message: e.message })
   }
 })
 

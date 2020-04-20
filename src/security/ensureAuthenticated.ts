@@ -10,6 +10,6 @@ export default async (request: Request, response: Response, next: NextFunction) 
     request.user = { id: userId }
     next()
   } catch (e) {
-    response.status(400).json({ message: e.message })
+    response.status(e.statusCode).json({ message: e.message })
   }
 }
