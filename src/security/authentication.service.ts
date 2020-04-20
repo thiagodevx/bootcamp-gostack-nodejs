@@ -4,6 +4,8 @@ import User from '../users/user.model'
 import { sign } from 'jsonwebtoken'
 import { compare } from 'bcryptjs'
 
+const secretkey = 'gostacksecretkey'
+
 export default class AuthenticationService {
   public authenticate = async (authentication: Authentication): Promise<String> => {
     const usersRepository = getRepository(User)
@@ -12,7 +14,7 @@ export default class AuthenticationService {
     const passwordMatches = await this.matchPassword(authentication.password, user.password)
     if (!passwordMatches) throw Error('Incorrect password')
 
-    const token = sign({ name: user.name }, 'gostacksecretkey', { subject: user.id, expiresIn: '7d' })
+    const token = sign({ name: user.name }, secretkey, { subject: user.id, expiresIn: '7d' })
     return token
   }
 
