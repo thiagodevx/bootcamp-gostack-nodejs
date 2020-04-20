@@ -7,7 +7,7 @@ export default class AppointmentsService {
   public createAppointment = async (provider: string, date: string): Promise<Appointment> => {
     const repository: AppointmentsRepository = getCustomRepository(AppointmentsRepository)
     const formatedDate = this.formatDate(date)
-    const validated = await this.itWasAlreadyMarked(formatedDate)
+    const validated = await this.validDate(formatedDate)
 
     if (validated) {
       const appointment = repository.create({ provider, date: formatedDate })
@@ -27,8 +27,9 @@ export default class AppointmentsService {
     return startOfHour(parseISO(dateAsText))
   }
 
-  private itWasAlreadyMarked = (date: Date): Promise<Boolean> => {
+  private validDate = async (date: Date): Promise<Boolean> => {
     const repository: AppointmentsRepository = getCustomRepository(AppointmentsRepository)
-    return repository.findByDate(date)
+    const appointment = await repository.findByDate(date)
+    return !appointment
   }
 }
