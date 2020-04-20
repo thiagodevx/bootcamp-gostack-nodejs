@@ -3,6 +3,7 @@ import { getRepository } from 'typeorm'
 import User from '../users/user.model'
 import { sign, verify } from 'jsonwebtoken'
 import { compare } from 'bcryptjs'
+import Token from './token.model'
 
 export const secretkey = 'gostacksecretkey'
 
@@ -27,11 +28,12 @@ export default class AuthenticationService {
     const [type, token] = authHeader.split(' ')
     if (type !== 'Bearer') throw Error('Are you use the JWT is following the format: Bearer -> Token?')
     const decoded = this.decodeToken(token)
+    return decoded.sub
   }
 
-  private decodeToken(token: string) {
+  private decodeToken(token: string): Token {
     try {
-      return verify(token, secretkey)
+      return verify(token, secretkey) as Token
     } catch {
       throw Error('Invalid token, try to log into the application again!')
     }
