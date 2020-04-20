@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import UsersService from './users.service'
 import User from './user.model'
+import ensureAuthenticated from '../security/ensureAuthenticated'
 
 const usersRouter = Router()
 const service = new UsersService()
@@ -15,6 +16,10 @@ usersRouter.post('/', async (request, response) => {
   } catch (e) {
     response.status(400).json({ message: e.message })
   }
+})
+
+usersRouter.patch('/avatar', ensureAuthenticated, async (request, response) => {
+  return response.json({ ok: true })
 })
 
 export default usersRouter
