@@ -1,4 +1,18 @@
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+
+@Entity('appointments')
 export default class Appointment {
+  @PrimaryGeneratedColumn('uuid')
   id?: string
-  constructor(public provider: string, public date: Date) {}
+
+  @Column()
+  provider: string
+
+  @Column('timestamp with time zone')
+  date: Date
+
+  constructor(provider: string, date: Date) {
+    this.provider = provider
+    this.date = date
+  }
 }
