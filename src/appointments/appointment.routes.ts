@@ -11,8 +11,8 @@ appointmentsRouter.get('/', async (request, response) => {
 
 appointmentsRouter.post('/', async (request, response) => {
   try {
-    const { provider, date } = request.body
-    const savedAppointment = await service.createAppointment(provider, date)
+    const { providerId, date } = request.body
+    const savedAppointment = await service.createAppointment(providerId, date)
     response.json(savedAppointment)
   } catch (e) {
     response.status(400).json({ message: e.message })
