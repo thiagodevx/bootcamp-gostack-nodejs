@@ -8,7 +8,8 @@ const tableInfo: TableOptions = {
       name: 'id',
       type: 'varchar',
       isPrimary: true,
-      generationStrategy: 'uuid'
+      generationStrategy: 'uuid',
+      default: 'uuid_generate_v4()'
     },
     {
       name: 'provider',
