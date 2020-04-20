@@ -2,7 +2,7 @@ import AppointmentsRepository from './appointments.repository'
 import { startOfHour, parseISO } from 'date-fns'
 import { getCustomRepository } from 'typeorm'
 import Appointment from './appointment.model'
-import AppError from '../shared/AppError'
+import AppError from '../shared/AppError.model'
 
 export default class AppointmentsService {
   public createAppointment = async (providerId: string, date: string): Promise<Appointment> => {

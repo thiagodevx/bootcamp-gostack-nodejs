@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import AppointmentsService from './appointments.service'
-import ensureAuthenticated from '../security/ensureAuthenticated'
+import ensureAuthenticated from '../security/ensureAuthenticated.route'
 
 const appointmentsRouter = Router()
 appointmentsRouter.use(ensureAuthenticated)
@@ -12,13 +12,9 @@ appointmentsRouter.get('/', async (request, response) => {
 })
 
 appointmentsRouter.post('/', async (request, response) => {
-  try {
-    const { providerId, date } = request.body
-    const savedAppointment = await service.createAppointment(providerId, date)
-    response.json(savedAppointment)
-  } catch (e) {
-    response.status(e.statusCode).json({ message: e.message })
-  }
+  const { providerId, date } = request.body
+  const savedAppointment = await service.createAppointment(providerId, date)
+  response.json(savedAppointment)
 })
 
 export default appointmentsRouter

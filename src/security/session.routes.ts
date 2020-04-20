@@ -6,14 +6,10 @@ const sessionRouter = Router()
 const service = new AuthenticationService()
 
 sessionRouter.post('/', async (request, response) => {
-  try {
-    const { email, password } = request.body
-    const authentication = new Authentication(email, password)
-    const token = await service.authenticate(authentication)
-    response.json(token)
-  } catch (e) {
-    response.status(e.statusCode).json({ message: e.message })
-  }
+  const { email, password } = request.body
+  const authentication = new Authentication(email, password)
+  const token = await service.authenticate(authentication)
+  response.json(token)
 })
 
 export default sessionRouter

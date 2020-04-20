@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 import { hash } from 'bcryptjs'
 import multerConfiguration from '../config/multerConfiguration'
-import AppError from '../shared/AppError'
+import AppError from '../shared/AppError.model'
 
 export default class UsersService {
   public create = async (user: User) => {

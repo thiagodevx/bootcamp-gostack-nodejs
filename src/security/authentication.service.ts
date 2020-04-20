@@ -4,7 +4,7 @@ import User from '../users/user.model'
 import { sign, verify } from 'jsonwebtoken'
 import { compare } from 'bcryptjs'
 import Token from './token.model'
-import AppError from '../shared/AppError'
+import AppError from '../shared/AppError.model'
 
 export const secretkey = 'gostacksecretkey'
 
