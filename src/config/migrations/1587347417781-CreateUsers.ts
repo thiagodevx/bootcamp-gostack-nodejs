@@ -13,14 +13,12 @@ const tableInfo: TableOptions = {
     },
     {
       name: 'name',
-      type: 'varchar',
-      isNullable: false
+      type: 'varchar'
     },
     {
       name: 'email',
       type: 'varchar',
-      isUnique: true,
-      isNullable: false
+      isUnique: true
     },
     {
       name: 'created_at',

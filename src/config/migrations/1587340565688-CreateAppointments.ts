@@ -13,13 +13,11 @@ const tableInfo: TableOptions = {
     },
     {
       name: 'provider',
-      type: 'varchar',
-      isNullable: false
+      type: 'varchar'
     },
     {
       name: 'date',
-      type: 'timestamp with time zone',
-      isNullable: false
+      type: 'timestamp with time zone'
     }
   ]
 }
