@@ -16,7 +16,7 @@ const newColumnForeignKeyOptions: TableForeignKeyOptions = {
   columnNames: ['provider_id'],
   referencedColumnNames: ['id'],
   referencedTableName: 'users',
-  onDelete: 'SET_NULL',
+  onDelete: 'SET NULL',
   onUpdate: 'CASCADE',
   name: 'fk_provider_id'
 }
