@@ -1,7 +1,9 @@
 import { Router } from 'express'
 import AppointmentsService from './appointments.service'
+import ensureAuthenticated from '../security/ensureAuthenticated'
 
 const appointmentsRouter = Router()
+appointmentsRouter.use(ensureAuthenticated)
 const service = new AppointmentsService()
 
 appointmentsRouter.get('/', async (request, response) => {
