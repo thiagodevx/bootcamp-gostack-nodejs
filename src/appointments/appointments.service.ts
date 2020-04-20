@@ -2,6 +2,7 @@ import AppointmentsRepository from './appointments.repository'
 import { startOfHour, parseISO } from 'date-fns'
 import { getCustomRepository } from 'typeorm'
 import Appointment from './appointment.model'
+import AppError from '../shared/AppError'
 
 export default class AppointmentsService {
   public createAppointment = async (providerId: string, date: string): Promise<Appointment> => {
@@ -14,7 +15,7 @@ export default class AppointmentsService {
       const savedAppointment = repository.save(appointment)
       return savedAppointment
     } else {
-      throw Error('Invalid appointment date')
+      throw new AppError('Invalid appointment date')
     }
   }
 
