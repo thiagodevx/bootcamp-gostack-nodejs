@@ -6,10 +6,14 @@ const usersRouter = Router()
 const service = new UsersService()
 
 usersRouter.post('/', async (request, response) => {
-  const { name, email, password } = request.body
-  const user: User = { name, email, password }
-  const savedUser = service.create(user)
-  response.json(savedUser)
+  try {
+    const { name, email, password } = request.body
+    const user: User = { name, email, password }
+    const savedUser = await service.create(user)
+    response.json(savedUser)
+  } catch (e) {
+    response.status(400).json({ message: e.message })
+  }
 })
 
 export default usersRouter
