@@ -27,6 +27,7 @@ usersRouter.patch('/avatar', ensureAuthenticated, upload.single('avatar'), async
     const file = request.file
     const userId = request.user.id
     const savedUser = await service.updateUserAvatar(userId, file.filename)
+    delete savedUser.password
     response.json(savedUser)
   } catch (e) {
     response.status(400).json({ message: e.message })
