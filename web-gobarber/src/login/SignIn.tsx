@@ -2,6 +2,8 @@ import React from 'react'
 import logoImg from '../assets/logo.svg'
 import { FiLogIn } from 'react-icons/fi'
 import './SignIn.scss'
+import Button from '../shared/Button'
+import Input from '../shared/Input'
 
 export default () => (
   <div className='sign-in'>
@@ -9,9 +11,9 @@ export default () => (
       <img src={logoImg} alt='GoBarber' />
       <form>
         <h1>Faça seu logon</h1>
-        <input type='text' placeholder='E-mail' />
-        <input type='password' placeholder='Senha' />
-        <button type='submit'>Entrar</button>
+        <Input type='text' placeholder='E-mail' />
+        <Input type='password' placeholder='Senha' />
+        <Button>Entrar</Button>
         <a href='forgot' className='forgot-password'>
           Esqueci minha senha
         </a>
