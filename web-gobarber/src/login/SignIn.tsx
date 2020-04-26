@@ -12,9 +12,11 @@ export default () => (
         <input type='text' placeholder='E-mail' />
         <input type='password' placeholder='Senha' />
         <button type='submit'>Entrar</button>
-        <a href='forgot'>Esqueci minha senha</a>
+        <a href='forgot' className='forgot-password'>
+          Esqueci minha senha
+        </a>
       </form>
-      <a href='criar-conta'>
+      <a href='criar-conta' className='create-account'>
         <FiLogIn />
         Criar Conta
       </a>
