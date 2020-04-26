@@ -1,9 +1,15 @@
 import React from 'react'
 
 interface InputProps {
-  type: string
-  placeholder: string
+  name: string
+  type?: string
+  placeholder?: string
 }
 export default (props: InputProps) => (
-  <input className='default-input' type={props.type} placeholder={props.placeholder}></input>
+  <input
+    className='default-input'
+    name={props.name}
+    type={props.type || 'text'}
+    placeholder={props.placeholder || ''}
+  ></input>
 )

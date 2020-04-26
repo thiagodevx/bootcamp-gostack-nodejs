@@ -11,8 +11,8 @@ export default () => (
       <img src={logoImg} alt='GoBarber' />
       <form>
         <h1>Faça seu logon</h1>
-        <Input type='text' placeholder='E-mail' />
-        <Input type='password' placeholder='Senha' />
+        <Input name='email' type='text' placeholder='E-mail' />
+        <Input name='password' type='password' placeholder='Senha' />
         <Button>Entrar</Button>
         <a href='forgot' className='forgot-password'>
           Esqueci minha senha
