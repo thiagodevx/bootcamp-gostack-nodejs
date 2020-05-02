@@ -2,13 +2,19 @@ import React from 'react'
 import logoImg from '../assets/logo.svg'
 import { FiMail, FiLock, FiUser, FiArrowLeft } from 'react-icons/fi'
 import { Form } from '@unform/web'
+import * as Yup from 'yup'
 import './SignUp.scss'
 import Button from '../shared/Button'
 import Input from '../shared/Input'
 
 export default () => {
   const signUp = (data: any) => {
-    console.log(data)
+    const signUpSchema = Yup.object().shape({
+      name: Yup.string().required('Nome obrigatório'),
+      email: Yup.string().email('Digite um e-mail válido').required('Email obrigatório'),
+      password: Yup.string().min(6, 'O campo senha deve ter no mínimo 6 caracteres')
+    })
+    signUpSchema.validate(data, { abortEarly: false }).then(console.log).catch(console.log)
   }
   return (
     <div className='sign-up'>
