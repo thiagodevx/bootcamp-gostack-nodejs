@@ -15,20 +15,19 @@ export default (props: InputProps) => {
   const [isFocused, setIsFocused] = useState(false)
   const [isFilled, setIsFilled] = useState(false)
   const focusedClass = isFocused ? 'focused' : ''
+
   const focusInput = useCallback(() => {
     setIsFocused(true)
   }, [])
   const blurInput = useCallback(() => {
     setIsFocused(false)
-    if (inputRef.current?.value) {
-      setIsFilled(true)
-    } else {
-      setIsFilled(false)
-    }
+    setIsFilled(!!inputRef.current?.value)
   }, [])
+
   useEffect(() => {
     field.registerField({ name: field.fieldName, ref: inputRef.current, path: 'value' })
   }, [field])
+
   const Icon = props.icon
   return (
     <div className={`default-input-container ${focusedClass}`}>
