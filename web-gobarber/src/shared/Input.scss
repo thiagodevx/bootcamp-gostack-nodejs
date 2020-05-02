@@ -14,6 +14,7 @@
       color: #666360;
     }
   }
+
   svg {
     color: #666360;
     position: absolute;
@@ -24,5 +25,14 @@
     font-size: 1.5em;
     top: 16px;
     left: 10px;
+  }
+  svg.focused {
+    color: #ff9000;
+  }
+}
+.default-input-container.focused {
+  .default-input {
+    color: #ff9000;
+    border: 2px solid #ff9000;
   }
 }

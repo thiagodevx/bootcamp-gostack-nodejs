@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { IconBaseProps } from 'react-icons/lib/cjs'
 import { useField } from '@unform/core'
 import './Input.scss'
@@ -11,15 +11,31 @@ interface InputProps {
 }
 export default (props: InputProps) => {
   const field = useField(props.name)
-  const inputRef = useRef(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const [isFocused, setIsFocused] = useState(false)
+  const [isFilled, setIsFilled] = useState(false)
+  const focusedClass = isFocused ? 'focused' : ''
+  const focusInput = useCallback(() => {
+    setIsFocused(true)
+  }, [])
+  const blurInput = useCallback(() => {
+    setIsFocused(false)
+    if (inputRef.current?.value) {
+      setIsFilled(true)
+    } else {
+      setIsFilled(false)
+    }
+  }, [])
   useEffect(() => {
     field.registerField({ name: field.fieldName, ref: inputRef.current, path: 'value' })
   }, [field])
   const Icon = props.icon
   return (
-    <div className='default-input-container'>
-      <Icon />
+    <div className={`default-input-container ${focusedClass}`}>
+      <Icon className={isFilled || isFocused ? 'focused' : ''} />
       <input
+        onFocus={focusInput}
+        onBlur={blurInput}
         className='default-input'
         name={props.name}
         type={props.type || 'text'}
