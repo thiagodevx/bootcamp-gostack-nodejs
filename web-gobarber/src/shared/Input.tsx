@@ -6,13 +6,13 @@ interface InputProps {
   name: string
   type?: string
   placeholder?: string
-  icon?: React.ComponentType<IconBaseProps>
+  icon: React.ComponentType<IconBaseProps>
 }
 export default (props: InputProps) => {
   const Icon = props.icon
   return (
     <div className='default-input-container'>
-      {Icon && <Icon size={20}></Icon>}
+      <Icon />
       <input
         className='default-input'
         name={props.name}
