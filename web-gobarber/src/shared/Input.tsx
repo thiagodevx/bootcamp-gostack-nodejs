@@ -41,6 +41,7 @@ export default (props: InputProps) => {
         placeholder={props.placeholder || ''}
         ref={inputRef}
       ></input>
+      {field.error}
     </div>
   )
 }
