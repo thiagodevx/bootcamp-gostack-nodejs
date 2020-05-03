@@ -4,8 +4,7 @@
     background: #232129;
     border-radius: 10px;
     border: 2px solid #232129;
-    padding: 16px;
-    padding-left: 40px;
+    padding: 16px 40px;
     width: 100%;
     margin-bottom: 8px;
     color: #f4ede8;
@@ -28,6 +27,19 @@
   }
   svg.focused {
     color: #ff9000;
+  }
+}
+.default-input-container.error {
+  .default-input {
+    color: #c53030;
+    border: 2px solid #c53030;
+  }
+  svg.tooltip-icon {
+    color: #c53030;
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    left: auto;
   }
 }
 .default-input-container.focused {

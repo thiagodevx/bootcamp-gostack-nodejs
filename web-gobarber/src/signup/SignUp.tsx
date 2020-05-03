@@ -13,13 +13,14 @@ export default () => {
   const formRef = useRef<FormHandles>(null)
 
   const signUp = async (data: any) => {
+    formRef.current?.setErrors({})
     const signUpSchema = Yup.object().shape({
       name: Yup.string().required('Nome obrigatório'),
       email: Yup.string().email('Digite um e-mail válido').required('Email obrigatório'),
       password: Yup.string().min(6, 'O campo senha deve ter no mínimo 6 caracteres')
     })
     try {
-      await signUpSchema.validate(data, { abortEarly: false }).then(console.log).catch(treatErrorOnForm)
+      await signUpSchema.validate(data, { abortEarly: false })
     } catch (error) {
       const errors = treatErrorOnForm(error)
       formRef.current?.setErrors(errors)

@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState, useCallback } from 'react'
 import { IconBaseProps } from 'react-icons/lib/cjs'
 import { useField } from '@unform/core'
 import './Input.scss'
+import { FiAlertCircle } from 'react-icons/fi'
+import Tooltip from './TooltipIcon'
 
 interface InputProps {
   name: string
@@ -15,7 +17,7 @@ export default (props: InputProps) => {
   const [isFocused, setIsFocused] = useState(false)
   const [isFilled, setIsFilled] = useState(false)
   const focusedClass = isFocused ? 'focused' : ''
-
+  const errorClass = field.error ? 'error' : ''
   const focusInput = useCallback(() => {
     setIsFocused(true)
   }, [])
@@ -30,7 +32,7 @@ export default (props: InputProps) => {
 
   const Icon = props.icon
   return (
-    <div className={`default-input-container ${focusedClass}`}>
+    <div className={`default-input-container ${focusedClass} ${errorClass}`}>
       <Icon className={isFilled || isFocused ? 'focused' : ''} />
       <input
         onFocus={focusInput}
@@ -41,7 +43,7 @@ export default (props: InputProps) => {
         placeholder={props.placeholder || ''}
         ref={inputRef}
       ></input>
-      {field.error}
+      {field.error && <Tooltip message={field.error} icon={FiAlertCircle} />}
     </div>
   )
 }
