@@ -1,0 +1,9 @@
+.tooltip-container {
+  .message {
+    position: absolute;
+    top: 20px;
+  }
+  .message.invisible {
+    display: none;
+  }
+}
