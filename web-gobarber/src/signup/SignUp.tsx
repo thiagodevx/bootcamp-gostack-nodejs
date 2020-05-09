@@ -17,7 +17,7 @@ export default () => {
     const signUpSchema = Yup.object().shape({
       name: Yup.string().required('Nome obrigatório'),
       email: Yup.string().email('Digite um e-mail válido').required('Email obrigatório'),
-      password: Yup.string().min(6, 'O campo senha deve ter no mínimo 6 caracteres')
+      password: Yup.string().min(6, 'Mínimo 6 caracteres')
     })
     try {
       await signUpSchema.validate(data, { abortEarly: false })

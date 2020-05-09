@@ -1,7 +1,25 @@
 .tooltip-container {
   .message {
     position: absolute;
-    top: 20px;
+    background: #c53030;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    // opacity: 0;
+    // transition: opacity 0.4s;
+    bottom: calc(100% - 8px);
+    left: 60%;
+    &::before {
+      border-style: solid;
+      border-color: #c53030 transparent;
+      border-width: 6px 6px 0 6px;
+      position: absolute;
+      top: 100%;
+      left: 80%;
+      content: '';
+    }
   }
   .message.invisible {
     display: none;
