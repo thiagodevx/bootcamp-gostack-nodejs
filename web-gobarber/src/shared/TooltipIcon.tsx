@@ -10,8 +10,8 @@ export default (props: TooltipProps) => {
   const [visible, setVisible] = useState(false)
   const visibleClass = visible ? 'visible' : 'invisible'
   return (
-    <div className='tooltip-container' onMouseOver={() => setVisible(true)} onMouseOut={() => setVisible(false)}>
-      <Icon className='tooltip-icon'></Icon>
+    <div className='tooltip-container'>
+      <Icon className='tooltip-icon' onMouseOver={() => setVisible(true)} onMouseLeave={() => setVisible(false)}></Icon>
       <span className={`message ${visibleClass}`}>{props.message}</span>
     </div>
   )

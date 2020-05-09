@@ -7,9 +7,8 @@
     font-size: 14px;
     font-weight: 500;
     color: #fff;
-    // opacity: 0;
-    // transition: opacity 0.4s;
-    bottom: calc(100% - 8px);
+    transition: opacity 0.4s;
+    bottom: calc(100% - 12px);
     left: 60%;
     &::before {
       border-style: solid;
@@ -20,8 +19,11 @@
       left: 80%;
       content: '';
     }
-  }
-  .message.invisible {
-    display: none;
+    &.visible {
+      opacity: 1;
+    }
+    &.invisible {
+      opacity: 0;
+    }
   }
 }
