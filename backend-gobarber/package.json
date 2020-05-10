@@ -6,14 +6,17 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --transpileOnly --inspect --ignore-watch node_modules src/server.ts",
+    "start": "ts-node-dev --transpileOnly --inspect --ignore-watch node_modules src/server.ts",
     "dev:slower": "ts-node-dev src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.6",
     "@types/jsonwebtoken": "^8.3.9",
     "@types/multer": "^1.4.3",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "date-fns": "^2.12.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",

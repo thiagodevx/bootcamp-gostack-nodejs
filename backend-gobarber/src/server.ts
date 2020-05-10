@@ -1,5 +1,6 @@
 import 'reflect-metadata'
 import express, { Request, Response, NextFunction } from 'express'
+import cors from 'cors'
 import 'express-async-errors'
 import routes from './config/routes'
 import './config/database'
@@ -7,6 +8,7 @@ import multerConfiguration from './config/multerConfiguration'
 import AppError from './shared/AppError.model'
 
 const app = express()
+app.use(cors())
 app.use(express.json())
 app.use(routes)
 app.use('/files', express.static(multerConfiguration.avatarFolter))
