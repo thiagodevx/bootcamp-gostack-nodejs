@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from 'react'
-import logoImg from '../../assets/logo.svg'
+import logoImg from '../../images/logo.svg'
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'

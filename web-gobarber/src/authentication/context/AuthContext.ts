@@ -1,9 +1,4 @@
 import { createContext } from 'react'
+import AuthContextInterface from './AuthContextInterface'
 
-interface AuthContext {
-  user: {
-    name: string
-  }
-}
-
-export default createContext<AuthContext>({} as AuthContext)
+export default createContext<AuthContextInterface>({} as AuthContextInterface)

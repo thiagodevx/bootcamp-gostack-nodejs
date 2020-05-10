@@ -1,15 +1,10 @@
 import React from 'react'
 
-import AuthContext from './authentication/context/AuthContext'
 import SignIn from './authentication/login/SignIn'
+import AuthContextProvider from './authentication/context/AuthContextProvider'
 
-const initialAuthState = {
-  user: {
-    name: ''
-  }
-}
 export default () => (
-  <AuthContext.Provider value={initialAuthState}>
+  <AuthContextProvider>
     <SignIn />
-  </AuthContext.Provider>
+  </AuthContextProvider>
 )
