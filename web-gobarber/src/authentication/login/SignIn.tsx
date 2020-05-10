@@ -14,7 +14,7 @@ export default () => {
   const formRef = useRef<FormHandles>(null)
   const authContext = useContext(AuthContext)
   const signInAction = async (data: any) => {
-    console.log(data)
+    authContext.signIn()
     formRef.current?.setErrors({})
     const signUpSchema = Yup.object().shape({
       email: Yup.string().email('Digite um e-mail válido').required('Email obrigatório'),
