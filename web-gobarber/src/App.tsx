@@ -1,8 +1,8 @@
 import React from 'react'
-import SignUp from './signup/SignUp'
+import SignIn from './login/SignIn'
 
 export default () => (
   <div>
-    <SignUp />
+    <SignIn />
   </div>
 )
