@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useContext } from 'react'
 import logoImg from '../../assets/logo.svg'
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { Form } from '@unform/web'
@@ -8,10 +8,11 @@ import Button from '../../shared/Button'
 import Input from '../../shared/Input'
 import { FormHandles } from '@unform/core'
 import treatErrorOnForm from '../../shared/functions/treatErrorOnForm'
+import AuthContext from '../context/AuthContext'
 
 export default () => {
   const formRef = useRef<FormHandles>(null)
-
+  const authContext = useContext(AuthContext)
   const signInAction = async (data: any) => {
     console.log(data)
     formRef.current?.setErrors({})
