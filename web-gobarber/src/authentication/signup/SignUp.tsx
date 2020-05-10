@@ -5,9 +5,9 @@ import { FiMail, FiLock, FiUser, FiArrowLeft } from 'react-icons/fi'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'
 import './SignUp.scss'
-import Button from '../shared/Button'
-import Input from '../shared/Input'
-import treatErrorOnForm from '../shared/functions/treatErrorOnForm'
+import Button from '../../shared/Button'
+import Input from '../../shared/Input'
+import treatErrorOnForm from '../../shared/functions/treatErrorOnForm'
 
 export default () => {
   const formRef = useRef<FormHandles>(null)

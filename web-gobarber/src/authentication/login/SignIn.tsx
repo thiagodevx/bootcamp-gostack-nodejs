@@ -1,13 +1,13 @@
 import React, { useRef } from 'react'
-import logoImg from '../assets/logo.svg'
+import logoImg from '../../assets/logo.svg'
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { Form } from '@unform/web'
 import * as Yup from 'yup'
 import './SignIn.scss'
-import Button from '../shared/Button'
-import Input from '../shared/Input'
+import Button from '../../shared/Button'
+import Input from '../../shared/Input'
 import { FormHandles } from '@unform/core'
-import treatErrorOnForm from '../shared/functions/treatErrorOnForm'
+import treatErrorOnForm from '../../shared/functions/treatErrorOnForm'
 
 export default () => {
   const formRef = useRef<FormHandles>(null)
