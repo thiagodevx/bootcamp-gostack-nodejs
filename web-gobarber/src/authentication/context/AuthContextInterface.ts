@@ -1,4 +1,4 @@
 export default interface AuthContextInterface {
   name: string
-  signIn(): void
+  signIn(email: string, password: string): void
 }

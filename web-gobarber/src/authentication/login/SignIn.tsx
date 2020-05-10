@@ -10,18 +10,22 @@ import { FormHandles } from '@unform/core'
 import treatErrorOnForm from '../../shared/functions/treatErrorOnForm'
 import AuthContext from '../context/AuthContext'
 
+interface SignInFormData {
+  email: string
+  password: string
+}
 export default () => {
   const formRef = useRef<FormHandles>(null)
   const authContext = useContext(AuthContext)
-  const signInAction = async (data: any) => {
-    authContext.signIn()
+  const signInAction = async (data: SignInFormData) => {
     formRef.current?.setErrors({})
     const signUpSchema = Yup.object().shape({
-      email: Yup.string().email('Digite um e-mail válido').required('Email obrigatório'),
+      email: Yup.string().required('Email obrigatório'),
       password: Yup.string().required('Senha obrigatória')
     })
     try {
       await signUpSchema.validate(data, { abortEarly: false })
+      authContext.signIn(data.email, data.password)
     } catch (error) {
       const errors = treatErrorOnForm(error)
       formRef.current?.setErrors(errors)
